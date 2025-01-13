@@ -51,6 +51,7 @@ const cors_1 = __importDefault(require("cors"));
 const mongoose = __importStar(require("mongoose"));
 const path_1 = __importDefault(require("path"));
 const plans_1 = __importDefault(require("./routers/plans"));
+const users_1 = __importDefault(require("./routers/users"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
@@ -58,6 +59,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.static("public"));
 app.use("/assets", express_1.default.static(path_1.default.join(__dirname, "assets")));
 app.use("/plans", plans_1.default);
+app.use("/users", users_1.default);
 const run = () => __awaiter(void 0, void 0, void 0, function* () {
     yield mongoose.connect(process.env.DATABASE_URL);
     app.listen(process.env.PORT, () => {

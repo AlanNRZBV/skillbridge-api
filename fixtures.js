@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Plan_1 = require("./src/models/Plan");
 const dotenv_1 = __importDefault(require("dotenv"));
+const User_1 = require("./src/models/User");
 dotenv_1.default.config();
 const dropCollection = (db, collectionName) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -33,6 +34,47 @@ const run = () => __awaiter(void 0, void 0, void 0, function* () {
         for (const collectionName of collections) {
             yield dropCollection(db, collectionName);
         }
+        yield User_1.User.create({
+            firstName: 'Sarah',
+            lastName: 'Thompson',
+            email: 'sarah.thompson@test.com',
+            password: 'test',
+        }, {
+            firstName: 'Michael',
+            lastName: 'Adams',
+            email: 'michael.adams@test.com',
+            password: 'test',
+        }, {
+            firstName: 'Jennifer',
+            lastName: 'Wilson',
+            email: 'jennifer.wilson@test.com',
+            password: 'test',
+        }, {
+            firstName: 'David',
+            lastName: 'Brown',
+            email: 'david.brown@test.com',
+            password: 'test',
+        }, {
+            firstName: 'Emily',
+            lastName: 'Johnson',
+            email: 'emily.johnson@test.com',
+            password: 'test',
+        }, {
+            firstName: 'Christopher',
+            lastName: 'Taylor',
+            email: 'christopher.taylor@test.com',
+            password: 'test',
+        }, {
+            firstName: 'Jessica',
+            lastName: 'Martinez',
+            email: 'jessica.martinez@test.com',
+            password: 'test',
+        }, {
+            firstName: 'James',
+            lastName: 'Anderson',
+            email: 'james.anderson@test.com',
+            password: 'test',
+        });
         yield Plan_1.Plan.create({
             type: "free",
             perYear: 0,

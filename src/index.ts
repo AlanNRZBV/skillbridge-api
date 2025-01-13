@@ -4,6 +4,7 @@ import cors from "cors";
 import * as mongoose from "mongoose";
 import path from "path";
 import plansRouter from "./routers/plans";
+import usersRouter from './routers/users';
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use("/assets", express.static(path.join(__dirname, "assets")));
 app.use("/plans", plansRouter);
+app.use("/users", usersRouter);
 
 const run = async () => {
   await mongoose.connect(process.env.DATABASE_URL!);

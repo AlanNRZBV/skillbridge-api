@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { Plan } from "./src/models/Plan";
 import dotenv from "dotenv";
+import { User } from './src/models/User';
 dotenv.config();
 
 const dropCollection = async (
@@ -25,6 +26,57 @@ const run = async () => {
     for (const collectionName of collections) {
       await dropCollection(db, collectionName);
     }
+
+    await User.create(
+      {
+        firstName: 'Sarah',
+        lastName: 'Thompson',
+        email: 'sarah.thompson@test.com',
+        password: 'test',
+      },
+      {
+        firstName: 'Michael',
+        lastName: 'Adams',
+        email: 'michael.adams@test.com',
+        password: 'test',
+      },
+      {
+        firstName: 'Jennifer',
+        lastName: 'Wilson',
+        email: 'jennifer.wilson@test.com',
+        password: 'test',
+      },
+      {
+        firstName: 'David',
+        lastName: 'Brown',
+        email: 'david.brown@test.com',
+        password: 'test',
+      },
+      {
+        firstName: 'Emily',
+        lastName: 'Johnson',
+        email: 'emily.johnson@test.com',
+        password: 'test',
+      },
+      {
+        firstName: 'Christopher',
+        lastName: 'Taylor',
+        email: 'christopher.taylor@test.com',
+        password: 'test',
+      },
+      {
+        firstName: 'Jessica',
+        lastName: 'Martinez',
+        email: 'jessica.martinez@test.com',
+        password: 'test',
+      },
+      {
+        firstName: 'James',
+        lastName: 'Anderson',
+        email: 'james.anderson@test.com',
+        password: 'test',
+      },
+    )
 
     await Plan.create(
       {

@@ -21,8 +21,28 @@ declare interface IPlan {
   perYear: number;
   features: Record<FeatureName, IFeatureInfo>;
 }
-declare interface IPlanFromDb extends IPlan {
-  _id: string;
-}
+
+// declare interface IPlanFromDb extends IPlan {
+//   _id: string;
+// }
 
 declare type PlanModel = Model<IPlan>;
+
+declare interface IUser {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  profilePicture: string | null;
+  token: string;
+}
+
+declare interface IUserWithoutToken extends Omit<IUser, "token"> {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  profilePicture: string | null;
+}
+
+declare type UserModel = Model<IUser>;
