@@ -36,6 +36,10 @@ const userSchema = new Schema<IUser, UserModel>({
   profilePicture: {
     type: String,
   },
+  role: {
+    type: String,
+    default: "user",
+  },
 });
 
 userSchema.pre("save", async function (next) {

@@ -34,10 +34,11 @@ declare interface IUser {
   email: string;
   password: string;
   profilePicture: string | null;
+  role: "user" | "admin";
   token: string;
 }
 
-declare interface IUserWithoutToken extends Omit<IUser, "token"> {
+declare interface IUserWithoutToken extends Omit<IUser, "token", "role"> {
   firstName: string;
   lastName: string;
   email: string;
