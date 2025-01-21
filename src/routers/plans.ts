@@ -1,5 +1,5 @@
 import express from "express";
-import { Plan } from "../models/Plan";
+import { Plan } from "../schemas/Plan";
 
 const plansRouter = express.Router();
 

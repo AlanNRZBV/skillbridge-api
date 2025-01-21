@@ -1,7 +1,7 @@
 import express from "express";
 import jwt from "jsonwebtoken";
 import { IUserWithoutToken } from "../types";
-import { User } from "../models/User";
+import { User } from "../schemas/User";
 import { MongooseError } from "mongoose";
 import { MongoServerError } from "mongodb";
 import { imagesUpload } from "../../multer";

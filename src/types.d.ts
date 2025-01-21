@@ -1,4 +1,4 @@
-import { HydratedDocument, Model } from "mongoose";
+import { Model, Schema } from "mongoose";
 
 declare type FeatureName =
   | "courseAccess"
@@ -22,10 +22,6 @@ declare interface IPlan {
   features: Record<FeatureName, IFeatureInfo>;
 }
 
-// declare interface IPlanFromDb extends IPlan {
-//   _id: string;
-// }
-
 declare type PlanModel = Model<IPlan>;
 
 declare interface IUser {
@@ -47,3 +43,36 @@ declare interface IUserWithoutToken extends Omit<IUser, "token", "role"> {
 }
 
 declare type UserModel = Model<IUser>;
+
+declare interface IReview {
+  authorId: Schema.Types.ObjectId;
+  courseId: Schema.Types.ObjectId;
+  content: string;
+}
+declare type ReviewModel = Model<IReview>;
+
+declare interface ILesson {
+  title: string;
+  length: string;
+  videoUrl: string;
+}
+declare type LessonsModel = Model<ILesson>;
+declare interface IContentsItem {
+  title: string;
+  lessons: ILesson[];
+}
+
+declare type ContentsItemModel = Model<IContentsItem>;
+
+declare interface ICourse {
+  title: string;
+  description: string;
+  availability: "free" | "paid";
+  contents: IContentsItem[];
+  difficulty: "beginner" | "intermediate" | "advanced";
+  length: number;
+  author: Schema.Types.ObjectId;
+  previewImages: string[];
+}
+
+declare type CourseModel = Model<ICourse>;
