@@ -53,19 +53,20 @@ usersRouter.post("/login", async (req, res, next) => {
         {
           user: {
             email: user.email,
-            role: user.role,
+            firstName: user.firstName,
+            lastName: user.lastName,
             _id: user._id,
           },
         },
         process.env.DEV_SECRET_ACCESS_TOKEN!,
-        { expiresIn: "1m" },
+        { expiresIn: "1d" },
       );
 
       res.cookie("accessToken", token, {
         httpOnly: true,
-        // secure: process.env.NODE_ENV === "production",
+        secure: process.env.NODE_ENV !== "production",
         sameSite: "strict",
-        maxAge: 5000,
+        maxAge: 1000 * 60 * 60 * 24,
       });
 
       res.status(200).json({ message: "Login successful" });
@@ -77,9 +78,25 @@ usersRouter.post("/login", async (req, res, next) => {
   }
 });
 
-usersRouter.get("/test", auth, async (req: AuthRequest, res, next) => {
+usersRouter.get("/current", auth, async (req: AuthRequest, res, next) => {
   try {
-    res.status(200).send({ message: "test", user: req.user });
+    const user = await User.findOne({ email: req.user?.email });
+
+    if (!user) {
+      res.status(403).send({ message: "Access denied" });
+      return;
+    }
+
+    res.status(200).send({ message: "User found", user: req.user });
+  } catch (e) {
+    next(e);
+  }
+});
+
+usersRouter.post("/logout", auth, async (req: AuthRequest, res, next) => {
+  try {
+    res.clearCookie("accessToken", { httpOnly: true, sameSite: "strict" });
+    res.status(200).json({ message: "Logged out successfully" });
   } catch (e) {
     next(e);
   }
