@@ -22,48 +22,51 @@ const contentsItemSchema = new Schema<IContentsItem, ContentsItemModel>({
   title: String,
 });
 
-const courseSchema = new Schema<ICourse, CourseModel>({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  availability: {
-    type: String,
-    required: true,
-  },
-  contents: {
-    type: [contentsItemSchema],
-    default: [],
-  },
-  difficulty: {
-    type: String,
-    required: true,
-  },
-  length: {
-    type: Number,
-    required: true,
-  },
-  author: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-    validate: {
-      validator: async (value: Schema.Types.ObjectId) => {
-        const user = await User.findById(value);
-        return Boolean(user);
+const courseSchema = new Schema<ICourse, CourseModel>(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    availability: {
+      type: String,
+      required: true,
+    },
+    contents: {
+      type: [contentsItemSchema],
+      default: [],
+    },
+    difficulty: {
+      type: String,
+      required: true,
+    },
+    length: {
+      type: Number,
+      required: true,
+    },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      validate: {
+        validator: async (value: Schema.Types.ObjectId) => {
+          const user = await User.findById(value);
+          return Boolean(user);
+        },
       },
     },
+    previewImages: {
+      type: [String],
+      required: true,
+      default: [],
+    },
   },
-  previewImages: {
-    type: [String],
-    required: true,
-    default: [],
-  },
-});
+  { timestamps: true },
+);
 
 export const Course: CourseModel = model<ICourse, CourseModel>(
   "Course",

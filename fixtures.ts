@@ -23,7 +23,7 @@ const run = async () => {
     await mongoose.connect(process.env.DATABASE_URL!);
     const db = mongoose.connection;
 
-    const collections = ["plans"];
+    const collections = ["plans", "users", "courses", "reviews"];
 
     for (const collectionName of collections) {
       await dropCollection(db, collectionName);
@@ -174,9 +174,9 @@ const run = async () => {
         length: 4,
         difficulty: "beginner",
         previewImages: [
-          "./assets/images/web-design-preview-01.png",
-          "./assets/images/web-design-preview-02.png",
-          "./assets/images/web-design-preview-03.png",
+          "web-design-preview-01.png",
+          "web-design-preview-02.png",
+          "web-design-preview-03.png",
         ],
       },
       {
@@ -187,9 +187,9 @@ const run = async () => {
         length: 6,
         difficulty: "intermediate",
         previewImages: [
-          "./assets/images/ui-ux-preview-01.png",
-          "./assets/images/ui-ux-preview-02.png",
-          "./assets/images/ui-ux-preview-03.png",
+          "ui-ux-preview-01.png",
+          "ui-ux-preview-02.png",
+          "ui-ux-preview-03.png",
         ],
       },
       {
@@ -200,9 +200,9 @@ const run = async () => {
         length: 8,
         difficulty: "intermediate",
         previewImages: [
-          "./assets/images/mobile-app-dev-preview-01.png",
-          "./assets/images/mobile-app-dev-preview-02.png",
-          "./assets/images/mobile-app-dev-preview-03.png",
+          "mobile-app-dev-preview-01.png",
+          "mobile-app-dev-preview-02.png",
+          "mobile-app-dev-preview-03.png",
         ],
       },
       {
@@ -213,9 +213,9 @@ const run = async () => {
         length: 10,
         difficulty: "beginner",
         previewImages: [
-          "./assets/images/graphic-design-preview-01.png",
-          "./assets/images/graphic-design-preview-02.png",
-          "./assets/images/graphic-design-preview-03.png",
+          "graphic-design-preview-01.png",
+          "graphic-design-preview-02.png",
+          "graphic-design-preview-03.png",
         ],
       },
       {
@@ -226,9 +226,9 @@ const run = async () => {
         length: 10,
         difficulty: "advanced",
         previewImages: [
-          "./assets/images/web-design-preview-01.png",
-          "./assets/images/web-design-preview-02.png",
-          "./assets/images/web-design-preview-02.png",
+          "web-design-preview-01.png",
+          "web-design-preview-02.png",
+          "web-design-preview-02.png",
         ],
       },
     ]);
