@@ -35,24 +35,28 @@ const run = async () => {
         lastName: "Thompson",
         email: "sarah.thompson@test.com",
         password: "test",
+        profilePicture: "/assets/images/avatar-01.png",
       },
       {
         firstName: "Michael",
         lastName: "Adams",
         email: "michael.adams@test.com",
         password: "test",
+        profilePicture: "/assets/images/avatar-02.png",
       },
       {
         firstName: "Jennifer",
         lastName: "Wilson",
         email: "jennifer.wilson@test.com",
         password: "test",
+        profilePicture: "/assets/images/avatar-03.png",
       },
       {
         firstName: "David",
         lastName: "Brown",
         email: "david.brown@test.com",
         password: "test",
+        profilePicture: "/assets/images/avatar-04.png",
       },
       {
         firstName: "Emily",

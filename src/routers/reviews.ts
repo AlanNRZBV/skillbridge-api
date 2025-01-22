@@ -5,7 +5,9 @@ const reviewsRouter = Router();
 
 reviewsRouter.get("/", async (_req, res, next) => {
   try {
-    const reviews = await Review.find();
+    const reviews = await Review.find()
+      .populate("authorId", "firstName lastName profilePicture")
+      .populate("courseId", "_id title");
 
     const isEmpty = reviews.length === 0;
 
