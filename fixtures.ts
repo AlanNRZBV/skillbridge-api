@@ -167,6 +167,8 @@ const run = async () => {
         "Discover the fundamentals of graphic design, including typography, color theory, layout design, and image manipulation techniques. Create visually stunning designs for print and digital media.",
       course5:
         "Become proficient in front-end web development. Learn HTML, CSS, JavaScript, and popular frameworks like Bootstrap and React. Build interactive and responsive websites.",
+      course6:
+        "Take your JavaScript skills to the next level. Explore advanced concepts like closures, prototypes, asynchronous programming, and ES6 features. Build complex applications with confidence.",
     };
 
     await Course.create([
@@ -182,6 +184,7 @@ const run = async () => {
           "web-design-preview-02.png",
           "web-design-preview-03.png",
         ],
+        mainImg: "course-01-cover.png",
       },
       {
         title: "UI/UX Design",
@@ -191,9 +194,112 @@ const run = async () => {
         length: 6,
         difficulty: "intermediate",
         previewImages: [
-          "ui-ux-preview-01.png",
-          "ui-ux-preview-02.png",
-          "ui-ux-preview-03.png",
+          "ux-ui-preview-01.png",
+          "ux-ui-preview-02.png",
+          "ux-ui-preview-03.png",
+        ],
+        mainImg: "course-02-cover.png",
+        contents: [
+          {
+            title: "Introduction to HTML",
+            lessons: [
+              {
+                title: "Understanding UI/UX Design Principles",
+                videoUrl: "",
+                length: 45,
+              },
+              {
+                title: "Importance of User-Centered Design",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "The Role of UI/UX Design in Product Development",
+                videoUrl: "",
+                length: 60,
+              },
+            ],
+          },
+          {
+            title: "User Research and Analysis",
+            lessons: [
+              {
+                title: "Conducting User Research and Interviews",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "Analyzing User Needs and Behavior",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "Creating User Personas and Scenarios",
+                videoUrl: "",
+                length: 45,
+              },
+            ],
+          },
+          {
+            title: "Wireframing and Prototyping",
+            lessons: [
+              {
+                title: "Introduction to Wireframing Tools and Techniques",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "Creating Low-Fidelity Wireframes",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "Prototyping and Interactive Mockups",
+                videoUrl: "",
+                length: 60,
+              },
+            ],
+          },
+          {
+            title: "Visual Design and Branding",
+            lessons: [
+              {
+                title: "Color Theory and Typography in UI Design",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "Visual Hierarchy and Layout Design",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "Creating a Strong Brand Identity",
+                videoUrl: "",
+                length: 45,
+              },
+            ],
+          },
+          {
+            title: "Usability Testing and Iteration",
+            lessons: [
+              {
+                title: "Usability Testing Methods and Techniques",
+                videoUrl: "",
+                length: 60,
+              },
+              {
+                title: "Analyzing Usability Test Results",
+                videoUrl: "",
+                length: 45,
+              },
+              {
+                title: "Iterating and Improving UX Designs",
+                videoUrl: "",
+                length: 45,
+              },
+            ],
+          },
         ],
       },
       {
@@ -208,6 +314,7 @@ const run = async () => {
           "mobile-app-dev-preview-02.png",
           "mobile-app-dev-preview-03.png",
         ],
+        mainImg: "course-03-cover.png",
       },
       {
         title: "Graphic Design for Beginners",
@@ -221,6 +328,7 @@ const run = async () => {
           "graphic-design-preview-02.png",
           "graphic-design-preview-03.png",
         ],
+        mainImg: "course-04-cover.png",
       },
       {
         title: "Front-End Web Development",
@@ -234,6 +342,17 @@ const run = async () => {
           "web-design-preview-02.png",
           "web-design-preview-02.png",
         ],
+        mainImg: "course-05-cover.png",
+      },
+      {
+        title: "Advanced JavaScript",
+        availability: "paid",
+        description: courseDescription.course6,
+        author: user_5?._id,
+        length: 6,
+        difficulty: "advanced",
+        previewImages: [],
+        mainImg: "course-06-cover.png",
       },
     ]);
 

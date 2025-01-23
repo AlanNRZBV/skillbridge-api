@@ -5,7 +5,10 @@ const coursesRouter = Router();
 
 coursesRouter.get("/", async (req, res, next) => {
   try {
-    const courses = await Course.find();
+    const courses = await Course.find().populate(
+      "author",
+      "firstName lastName profilePicture",
+    );
     const isEmpty = courses.length === 0;
 
     if (isEmpty) {

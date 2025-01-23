@@ -64,6 +64,10 @@ const courseSchema = new Schema<ICourse, CourseModel>(
       required: true,
       default: [],
     },
+    mainImg: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true },
 );

@@ -56,7 +56,9 @@ declare interface ILesson {
   length: string;
   videoUrl: string;
 }
+
 declare type LessonsModel = Model<ILesson>;
+
 declare interface IContentsItem {
   title: string;
   lessons: ILesson[];
@@ -73,6 +75,7 @@ declare interface ICourse {
   length: number;
   author: Schema.Types.ObjectId;
   previewImages: string[];
+  mainImg: string;
 }
 
 declare type CourseModel = Model<ICourse>;
