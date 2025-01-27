@@ -76,6 +76,7 @@ declare interface ICourse {
   author: Schema.Types.ObjectId;
   previewImages: string[];
   mainImg: string;
+  mainVideo: string;
 }
 
 declare type CourseModel = Model<ICourse>;

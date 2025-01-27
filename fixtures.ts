@@ -199,6 +199,8 @@ const run = async () => {
           "ux-ui-preview-03.png",
         ],
         mainImg: "course-02-cover.png",
+        mainVideo:
+          "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
         contents: [
           {
             title: "Introduction to HTML",

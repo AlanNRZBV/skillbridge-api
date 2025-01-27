@@ -68,6 +68,11 @@ const courseSchema = new Schema<ICourse, CourseModel>(
       type: String,
       required: true,
     },
+    mainVideo: {
+      type: String,
+      required: true,
+      default: "",
+    },
   },
   { timestamps: true },
 );
