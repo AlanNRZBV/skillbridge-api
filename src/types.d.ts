@@ -57,14 +57,10 @@ declare interface ILesson {
   videoUrl: string;
 }
 
-declare type LessonsModel = Model<ILesson>;
-
 declare interface IContentsItem {
   title: string;
   lessons: ILesson[];
 }
-
-declare type ContentsItemModel = Model<IContentsItem>;
 
 declare interface ICourse {
   title: string;
@@ -79,4 +75,28 @@ declare interface ICourse {
   mainVideo: string;
 }
 
+declare type LessonsModel = Model<ILesson>;
+declare type ContentsItemModel = Model<IContentsItem>;
 declare type CourseModel = Model<ICourse>;
+
+declare interface IAbout {
+  title: string;
+  description: string;
+  section: IAboutSection[];
+}
+
+declare interface IAboutCard {
+  title: string;
+  description: string;
+  icon: string;
+}
+declare interface IAboutSection {
+  title: string;
+  description: string;
+  type: "achievement" | "goal";
+  cards: IAboutCard[];
+}
+
+declare type AboutCardModel = Model<IAboutCard>;
+declare type AboutSectionModel = Model<IAboutSection>;
+declare type AboutModel = Model<IAbout>;

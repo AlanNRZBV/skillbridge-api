@@ -8,6 +8,7 @@ import usersRouter from "./routers/users";
 import cookieParser from "cookie-parser";
 import reviewsRouter from "./routers/reviews";
 import coursesRouter from "./routers/courses";
+import aboutRouter from "./routers/about";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use("/plans", plansRouter);
 app.use("/users", usersRouter);
 app.use("/reviews", reviewsRouter);
 app.use("/courses", coursesRouter);
+app.use("/about", aboutRouter);
 
 const run = async () => {
   await mongoose.connect(process.env.DATABASE_URL!);
