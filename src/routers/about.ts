@@ -7,7 +7,7 @@ const aboutRouter = Router();
 
 aboutRouter.get("/", async (req, res, next) => {
   try {
-    const aboutData = await About.find().orFail();
+    const aboutData = await About.findOne().orFail();
     res.send({ message: "About data loaded", aboutData });
   } catch (e) {
     if (e instanceof mongoose.Error.DocumentNotFoundError) {

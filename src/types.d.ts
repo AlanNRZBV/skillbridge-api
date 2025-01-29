@@ -100,3 +100,19 @@ declare interface IAboutSection {
 declare type AboutCardModel = Model<IAboutCard>;
 declare type AboutSectionModel = Model<IAboutSection>;
 declare type AboutModel = Model<IAbout>;
+
+declare interface IMessageUserData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
+
+declare interface IMessage {
+  subject: string;
+  message: string;
+  userData: IMessageUserData;
+}
+
+declare type MessageUserData = Model<IMessageUserData>;
+declare type MessageModel = Model<IMessage>;
