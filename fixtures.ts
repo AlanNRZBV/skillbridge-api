@@ -24,7 +24,14 @@ const run = async () => {
     await mongoose.connect(process.env.DATABASE_URL!);
     const db = mongoose.connection;
 
-    const collections = ["plans", "users", "courses", "reviews", "about"];
+    const collections = [
+      "plans",
+      "users",
+      "courses",
+      "reviews",
+      "abouts",
+      "messages",
+    ];
 
     for (const collectionName of collections) {
       await dropCollection(db, collectionName);
@@ -185,6 +192,28 @@ const run = async () => {
           "web-design-preview-02.png",
           "web-design-preview-03.png",
         ],
+        contents: [
+          {
+            title: "Introduction to HTML",
+            lessons: [],
+          },
+          {
+            title: "Styling with CSS",
+            lessons: [],
+          },
+          {
+            title: "Introduction to Responsive Design",
+            lessons: [],
+          },
+          {
+            title: "Design Principles for Web",
+            lessons: [],
+          },
+          {
+            title: "Building a Basic Website",
+            lessons: [],
+          },
+        ],
         mainImg: "course-01-cover.png",
       },
       {
@@ -200,6 +229,7 @@ const run = async () => {
           "ux-ui-preview-03.png",
         ],
         mainImg: "course-02-cover.png",
+        released: true,
         mainVideo:
           "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
         contents: [
@@ -317,6 +347,28 @@ const run = async () => {
           "mobile-app-dev-preview-02.png",
           "mobile-app-dev-preview-03.png",
         ],
+        contents: [
+          {
+            title: "Introduction to Mobile App Development",
+            lessons: [],
+          },
+          {
+            title: "Fundamentals of Swift Programming (iOS)",
+            lessons: [],
+          },
+          {
+            title: "Fundamentals of Kotlin Programming (Android)",
+            lessons: [],
+          },
+          {
+            title: "Building User Interfaces",
+            lessons: [],
+          },
+          {
+            title: "App Deployment and Testing",
+            lessons: [],
+          },
+        ],
         mainImg: "course-03-cover.png",
       },
       {
@@ -331,6 +383,28 @@ const run = async () => {
           "graphic-design-preview-02.png",
           "graphic-design-preview-03.png",
         ],
+        contents: [
+          {
+            title: "Introduction to Graphic Design",
+            lessons: [],
+          },
+          {
+            title: "Typography and Color Theory",
+            lessons: [],
+          },
+          {
+            title: "Layout Design and Composition",
+            lessons: [],
+          },
+          {
+            title: "Image Editing and Manipulation",
+            lessons: [],
+          },
+          {
+            title: "Designing for Print and Digital Media",
+            lessons: [],
+          },
+        ],
         mainImg: "course-04-cover.png",
       },
       {
@@ -344,6 +418,28 @@ const run = async () => {
           "web-design-preview-01.png",
           "web-design-preview-02.png",
           "web-design-preview-02.png",
+        ],
+        contents: [
+          {
+            title: "HTML Fundamentals",
+            lessons: [],
+          },
+          {
+            title: "CSS Styling and Layouts",
+            lessons: [],
+          },
+          {
+            title: "JavaScript Basics",
+            lessons: [],
+          },
+          {
+            title: "Building Responsive Websites",
+            lessons: [],
+          },
+          {
+            title: "Introduction to Bootstrap and React",
+            lessons: [],
+          },
         ],
         mainImg: "course-05-cover.png",
       },

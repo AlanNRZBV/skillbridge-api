@@ -1,10 +1,11 @@
 {
   "name": "skillbridge-api",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
     "seed": "ts-node fixtures.ts"
+
   },
   "keywords": [],
   "author": "",

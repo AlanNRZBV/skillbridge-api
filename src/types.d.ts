@@ -73,6 +73,7 @@ declare interface ICourse {
   previewImages: string[];
   mainImg: string;
   mainVideo: string;
+  released: boolean;
 }
 
 declare type LessonsModel = Model<ILesson>;

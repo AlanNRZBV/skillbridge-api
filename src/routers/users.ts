@@ -2,7 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import { IUserWithoutToken } from "../types";
 import { User } from "../schemas/User";
-import { MongooseError } from "mongoose";
+import mongoose, { MongooseError } from "mongoose";
 import { MongoServerError } from "mongodb";
 import { imagesUpload } from "../../multer";
 import bcrypt from "bcrypt";
@@ -47,7 +47,8 @@ usersRouter.post("/login", async (req, res, next) => {
     if (!email || !password) {
       res.status(400).send({ message: "All fields are mandatory" });
     }
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email }).orFail();
+
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = jwt.sign(
         {
@@ -70,10 +71,21 @@ usersRouter.post("/login", async (req, res, next) => {
       });
 
       res.status(200).json({ message: "Login successful" });
-    } else {
-      res.status(401).send({ message: "Email or password is not valid" });
     }
   } catch (e) {
+    if (e instanceof mongoose.Error.DocumentNotFoundError) {
+      res.status(404).send({ message: "Email or Password is not correct", e });
+      return;
+    }
+    if (e instanceof MongooseError) {
+      res.status(500).send({ message: "Database error", e });
+      return;
+    }
+    if (e instanceof MongoServerError) {
+      res.status(503).send({ message: "Server error", e });
+      return;
+    }
+
     next(e);
   }
 });

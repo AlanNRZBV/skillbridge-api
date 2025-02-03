@@ -71,6 +71,10 @@ const courseSchema = new Schema<ICourse, CourseModel>(
     mainVideo: {
       type: String,
     },
+    released: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true },
 );
