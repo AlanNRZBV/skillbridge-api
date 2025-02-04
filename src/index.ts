@@ -14,7 +14,12 @@ import messagesRouter from "./routers/messages";
 dotenv.config();
 
 const app: Express = express();
-app.use(cors({ credentials: true }));
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://alannrzbv.github.io"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.static("public"));
 app.use(cookieParser());
