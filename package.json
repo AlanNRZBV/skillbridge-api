@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
     "seed": "ts-node src/fixtures.ts",
-    "build": "tsc -b && cp -R assets dist/assets",
+    "build": "tsc -b && cp -R src/assets src/dist/assets",
     "start": "node src/dist/index.js"
   },
   "keywords": [],
