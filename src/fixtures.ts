@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
-import { Plan } from "./src/schemas/Plan";
+import { Plan } from "./schemas/Plan";
 import dotenv from "dotenv";
-import { User } from "./src/schemas/User";
-import { Course } from "./src/schemas/Course";
-import { Review } from "./src/schemas/Review";
-import { About } from "./src/schemas/About";
+import { User } from "./schemas/User";
+import { Course } from "./schemas/Course";
+import { Review } from "./schemas/Review";
+import { About } from "./schemas/About";
 dotenv.config();
 
 const dropCollection = async (

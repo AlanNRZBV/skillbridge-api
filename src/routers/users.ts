@@ -4,7 +4,7 @@ import { IUserWithoutToken } from "../types";
 import { User } from "../schemas/User";
 import mongoose, { MongooseError } from "mongoose";
 import { MongoServerError } from "mongodb";
-import { imagesUpload } from "../../multer";
+import { imagesUpload } from "../multer";
 import bcrypt from "bcrypt";
 import auth, { AuthRequest } from "../middleware/auth";
 
