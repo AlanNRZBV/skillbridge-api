@@ -25,10 +25,10 @@ usersRouter.post(
       };
       const newUser = new User(userDataFromClient);
       await newUser.save();
-      res.json({ message: "User created successfully" });
+      res.json({ message: `Hi, ${data.firstName} ${data.lastName}` });
     } catch (e) {
       if (e instanceof MongooseError) {
-        res.status(422).send(e.message);
+        res.status(422).send(e);
         return;
       }
 
@@ -70,7 +70,9 @@ usersRouter.post("/login", async (req, res, next) => {
         maxAge: 1000 * 60 * 60 * 24,
       });
 
-      res.status(200).json({ message: "Login successful" });
+      res
+        .status(200)
+        .json({ message: `Welcome back, ${user.firstName} ${user.lastName}` });
     }
   } catch (e) {
     if (e instanceof mongoose.Error.DocumentNotFoundError) {

@@ -16,8 +16,10 @@ const userSchema = new Schema<IUser, UserModel>(
     },
     password: {
       type: String,
-      required: true,
-      minlength: process.env.DEV_MODE ? 8 : 4,
+      required: [true, "Password is required"],
+      minlength: process.env.DEV_MODE
+        ? 8
+        : [4, "Password must contain at least 4 characters"],
     },
     email: {
       type: String,
