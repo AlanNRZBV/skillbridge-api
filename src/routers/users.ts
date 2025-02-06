@@ -67,6 +67,8 @@ usersRouter.post("/login", async (req, res, next) => {
         httpOnly: true,
         secure: true,
         sameSite: "none",
+        domain: "skillbridge-api-0m6e.onrender.com",
+        path: "/",
         maxAge: 1000 * 60 * 60 * 24,
       });
 
