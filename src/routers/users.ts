@@ -65,9 +65,12 @@ usersRouter.post("/login", async (req, res, next) => {
 
       res.cookie("accessToken", token, {
         httpOnly: true,
-        secure: true,
-        sameSite: "none",
-        domain: "skillbridge-api-0m6e.onrender.com",
+        secure: process.env.NODE_ENV !== "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+        domain:
+          process.env.NODE_ENV === "production"
+            ? "skillbridge-api-0m6e.onrender.com"
+            : "",
         path: "/",
         maxAge: 1000 * 60 * 60 * 24,
       });
