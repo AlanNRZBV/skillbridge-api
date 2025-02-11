@@ -100,13 +100,12 @@ usersRouter.post("/login", async (req, res, next) => {
 usersRouter.get("/current", auth, async (req: AuthRequest, res, next) => {
   try {
     const user = await User.findOne({ email: req.user?.email });
-
     if (!user) {
       res.status(403).send({ message: "Access denied" });
       return;
     }
 
-    res.status(200).send({ message: "User found", user: req.user });
+    res.status(200).send({ message: "User found", user: user });
   } catch (e) {
     next(e);
   }
@@ -114,8 +113,24 @@ usersRouter.get("/current", auth, async (req: AuthRequest, res, next) => {
 
 usersRouter.post("/logout", auth, async (req: AuthRequest, res, next) => {
   try {
-    res.clearCookie("accessToken", { httpOnly: true, sameSite: "strict" });
-    res.status(200).json({ message: "Logged out successfully" });
+    res.clearCookie("accessToken", {
+      httpOnly: true,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+    });
+    res.status(200).send({ message: "Logged out successfully" });
+  } catch (e) {
+    next(e);
+  }
+});
+
+usersRouter.get("/self", auth, async (req: AuthRequest, res, next) => {
+  try {
+    const user = await User.findOne({ email: req.user?.email });
+    if (!user) {
+      res.status(403).send({ message: "Access denied" });
+      return;
+    }
+    res.status(200).send({ message: "User found", user: user });
   } catch (e) {
     next(e);
   }
