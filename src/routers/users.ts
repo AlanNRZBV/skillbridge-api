@@ -21,7 +21,7 @@ usersRouter.post(
         firstName: data.firstName,
         lastName: data.lastName,
         password: data.password,
-        profilePicture: req.file ? req.file.filename : null,
+        profilePicture: req.file ? `assets/${req.file.filename}` : null,
       };
       const newUser = new User(userDataFromClient);
       await newUser.save();
@@ -111,10 +111,11 @@ usersRouter.get("/current", auth, async (req: AuthRequest, res, next) => {
   }
 });
 
-usersRouter.post("/logout", auth, async (req: AuthRequest, res, next) => {
+usersRouter.post("/logout", auth, async (req, res, next) => {
   try {
     res.clearCookie("accessToken", {
       httpOnly: true,
+      secure: process.env.NODE_ENV !== "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
     });
     res.status(200).send({ message: "Logged out successfully" });
@@ -123,7 +124,7 @@ usersRouter.post("/logout", auth, async (req: AuthRequest, res, next) => {
   }
 });
 
-usersRouter.get("/self", auth, async (req: AuthRequest, res, next) => {
+usersRouter.get("/self/:id", auth, async (req: AuthRequest, res, next) => {
   try {
     const user = await User.findOne({ email: req.user?.email });
     if (!user) {
