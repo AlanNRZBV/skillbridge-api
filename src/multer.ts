@@ -7,12 +7,20 @@ import { Request } from "express";
 const publicPath = path.join(__dirname, "assets");
 
 const imageStorage: StorageEngine = multer.diskStorage({
-  destination: async (req: Request, file: Express.Multer.File, cb) => {
+  destination: async (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, destination: string) => void,
+  ) => {
     const destDir = path.join(publicPath, "public");
     await fs.mkdir(destDir, { recursive: true });
     cb(null, publicPath);
   },
-  filename: (req: Request, file: Express.Multer.File, cb) => {
+  filename: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, destination: string) => void,
+  ) => {
     const extension = path.extname(file.originalname);
     const filename = path.join("public", randomUUID() + extension);
     cb(null, filename);

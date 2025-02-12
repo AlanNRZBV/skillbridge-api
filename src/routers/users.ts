@@ -7,13 +7,14 @@ import { MongoServerError } from "mongodb";
 import { imagesUpload } from "../multer";
 import bcrypt from "bcrypt";
 import auth, { AuthRequest } from "../middleware/auth";
+import { Request, Response, NextFunction } from "express";
 
 const usersRouter = express.Router();
 
 usersRouter.post(
   "/register",
   imagesUpload.single("profilePicture"),
-  async (req, res, next) => {
+  async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data: IUserWithoutToken = req.body;
       const userDataFromClient: IUserWithoutToken = {
