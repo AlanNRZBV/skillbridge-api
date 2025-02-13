@@ -118,6 +118,11 @@ usersRouter.post("/logout", auth, async (req, res, next) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      domain:
+        process.env.NODE_ENV === "production"
+          ? "skillbridge-api-0m6e.onrender.com"
+          : "",
+      path: "/",
     });
     res.status(200).send({ message: "Logged out successfully" });
   } catch (e) {
