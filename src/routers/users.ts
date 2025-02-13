@@ -66,7 +66,7 @@ usersRouter.post("/login", async (req, res, next) => {
 
       res.cookie("accessToken", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV !== "production",
+        secure: process.env.NODE_ENV === "production",
         sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
         domain:
           process.env.NODE_ENV === "production"
