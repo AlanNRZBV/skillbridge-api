@@ -116,7 +116,7 @@ usersRouter.post("/logout", auth, async (req, res, next) => {
   try {
     res.clearCookie("accessToken", {
       httpOnly: true,
-      secure: process.env.NODE_ENV !== "production",
+      secure: process.env.NODE_ENV === "production",
       sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
     });
     res.status(200).send({ message: "Logged out successfully" });
